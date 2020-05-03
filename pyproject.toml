@@ -1,9 +1,10 @@
 [tool.poetry]
 name = "file-util"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Eyal Levin <eyalev@gmail.com>"]
 readme = "README.md"
+homepage = "https://github.com/eyalev/file-util"
 
 [tool.poetry.dependencies]
 python = "^3.6"
