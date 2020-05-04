@@ -15,3 +15,6 @@ class File:
 
     def write(self, text):
         self.pathlib.write_text(text)
+
+    def read(self):
+        return self.pathlib.read_text()
