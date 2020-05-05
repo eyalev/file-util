@@ -13,6 +13,17 @@ class File:
     def pathlib(self):
         return Path(self.path)
 
+    @property
+    def exists(self):
+        return self.pathlib.exists()
+
+    @property
+    def does_not_exists(self):
+        return not self.exists
+
+    def create(self):
+        self.pathlib.touch()
+
     def write(self, text):
         self.pathlib.write_text(text)
 
