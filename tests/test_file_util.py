@@ -17,3 +17,17 @@ def test_does_not_exists(tmp_path: Path):
     assert _file.does_not_exists
     _file.create()
     assert _file.exists
+
+
+def test_to_dict(tmp_path: Path):
+
+    yaml_string = """
+one:
+  two: "hi"
+"""
+
+    file_path = str(tmp_path.joinpath("file.yaml"))
+    _file = File(file_path)
+    _file.write(yaml_string)
+    yaml_dict = _file.to_dict()
+    assert yaml_dict['one']['two'] == 'hi'

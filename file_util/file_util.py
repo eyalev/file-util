@@ -1,4 +1,5 @@
 from pathlib import Path
+import yaml
 
 
 class File:
@@ -21,6 +22,14 @@ class File:
     def does_not_exists(self):
         return not self.exists
 
+    @property
+    def is_yaml(self):
+        return ".yaml" in self.path
+
+    @property
+    def text(self):
+        return self.pathlib.read_text()
+
     def create(self):
         self.pathlib.touch()
 
@@ -28,4 +37,10 @@ class File:
         self.pathlib.write_text(text)
 
     def read(self):
-        return self.pathlib.read_text()
+        return self.text
+
+    def to_dict(self):
+        if self.is_yaml:
+            return yaml.safe_load(self.text)
+        else:
+            raise NotImplementedError
